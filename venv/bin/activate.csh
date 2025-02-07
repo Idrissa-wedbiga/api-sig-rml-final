@@ -8,7 +8,11 @@ alias deactivate 'test $?_OLD_VIRTUAL_PATH != 0 && setenv PATH "$_OLD_VIRTUAL_PA
 # Unset irrelevant variables.
 deactivate nondestructive
 
+<<<<<<< HEAD
 setenv VIRTUAL_ENV /home/unz/api-sig-rml/venv
+=======
+setenv VIRTUAL_ENV /home/unz/Bureau/ProjetgenieLogiciel/api_sig_rml/venv
+>>>>>>> 070941d (Projet api bien configurer)
 
 set _OLD_VIRTUAL_PATH="$PATH"
 setenv PATH "$VIRTUAL_ENV/"bin":$PATH"

@@ -33,7 +33,11 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
+<<<<<<< HEAD
 set -gx VIRTUAL_ENV /home/unz/api-sig-rml/venv
+=======
+set -gx VIRTUAL_ENV /home/unz/Bureau/ProjetgenieLogiciel/api_sig_rml/venv
+>>>>>>> 070941d (Projet api bien configurer)
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/"bin $PATH

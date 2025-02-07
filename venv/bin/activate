@@ -38,7 +38,11 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
+<<<<<<< HEAD
 VIRTUAL_ENV=/home/unz/api-sig-rml/venv
+=======
+VIRTUAL_ENV=/home/unz/Bureau/ProjetgenieLogiciel/api_sig_rml/venv
+>>>>>>> 070941d (Projet api bien configurer)
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

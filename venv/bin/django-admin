@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #!/home/unz/api-sig-rml/venv/bin/python3
+=======
+#!/home/unz/Bureau/ProjetgenieLogiciel/api_sig_rml/venv/bin/python3
+>>>>>>> 070941d (Projet api bien configurer)
 # -*- coding: utf-8 -*-
 import re
 import sys

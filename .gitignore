@@ -1,0 +1,27 @@
+# Ignore les fichiers Python compilés
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore les fichiers de logs
+*.log
+
+# Ignore les dossiers de l'environnement virtuel
+venv/
+env/
+
+# Ignore les fichiers de base de données SQLite
+db.sqlite3
+
+# Ignore les clés et fichiers sensibles
+.env
+*.pem
+
+# Ignore les dépendances et artefacts générés
+node_modules/
+dist/
+build/
+
+# Ignore les fichiers spécifiques à l'IDE (VSCode, PyCharm)
+.vscode/
+.idea/
