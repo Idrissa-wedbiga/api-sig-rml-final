@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-
+from drf_yasg import openapi
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -26,6 +26,7 @@ SECRET_KEY = 'django-insecure-^vl^(8ns(=ru4jdkgefzc=f^qy2-#6p7nm+ne54alw0e)=5n-+
 DEBUG = True
 
 ALLOWED_HOSTS = []
+AUTH_USER_MODEL = 'usersManagements.Utilisateur'
 
 
 # Application definition
@@ -37,13 +38,23 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #Mes applications
+    #les applications DJANGO REST FRAMEWORK
     'rest_framework',
+    'rest_framework.authtoken',
+    #lES APPLICATIONS DE DOCUMENTATION
     'drf_yasg',
-    'usersManagements'
+    #lES APPLICATIONS DE L'API
+    'usersManagements',
+    'materiels',
+    'reservations',
+    'Rapports',
+    'Laboratoire',
+    #Autorisation de CORS
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -53,7 +64,16 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CORS_ALLOW_ALL_ORIGINS = True  # 🔥 Désactive la restriction CORS (uniquement pour dev)
+#A utiliser en production
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",  # 🔥 Frontend React
+    "http://127.0.0.1:5173",
+]
+
+
 ROOT_URLCONF = 'api_sig_rml.urls'
+
 
 TEMPLATES = [
     {
@@ -76,7 +96,7 @@ WSGI_APPLICATION = 'api_sig_rml.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
+# Pour 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -87,8 +107,8 @@ DATABASES = {
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'postgres',
-#         'USER': 'postgres',
+#         'NAME': 'api_sig_rml',
+#         'USER': 'idrissa ',
 #         'PASSWORD': 'postgres',
 #         'HOST': 'localhost',
 #         'PORT': '5432',
@@ -148,11 +168,32 @@ REST_FRAMEWORK = {
     ],
     #Permet de définir les classes d'authentification par défaut
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.BasicAuthentication',
+        #'rest_framework.authentication.SessionAuthentication',
+        #'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
     ],
     #Permet de définir les permissions par défaut
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',
+        'rest_framework.permissions.IsAuthenticated',
     ],
 }
+
+
+""" SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header'
+        }
+    },
+    'USE_SESSION_AUTH': False,  # Désactive l'authentification basée sur les sessions
+} """
+#Gestion de l'envoie de mail
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # Utilise Gmail (ou un autre fournisseur)
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'id@gmail.com'  # Ton email
+EMAIL_HOST_PASSWORD = '1111'  # Ton mot de passe d’application (PAS le vrai mot de passe Gmail)
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
