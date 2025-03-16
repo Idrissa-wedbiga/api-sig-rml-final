@@ -1,4 +1,4 @@
-apturl==0.5.2
+
 asgiref==3.8.0
 bcrypt==3.2.0
 blinker==1.4
@@ -53,6 +53,7 @@ pexpect==4.8.0
 Pillow==9.0.1
 platformdirs==4.2.0
 protobuf==3.12.4
+psycopg2-binary==2.9.10
 ptyprocess==0.7.0
 pycairo==1.20.1
 pycryptodomex==3.11.0
