@@ -10,7 +10,7 @@ class Laboratoire(models.Model):
     date_creation = models.DateTimeField(auto_now_add=True)
     
     # Le responsable unique du labo
-    responsable = models.OneToOneField(
+    responsable = models.OneToO(
         'usersManagements.Utilisateur', 
         on_delete=models.SET_NULL, 
         null=True, 
